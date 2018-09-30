@@ -1,0 +1,53 @@
+.container {
+    width: 400px;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.zone {
+    flex-basis: 33.33%;
+    box-sizing: border-box;
+    /* border: 1px solid #000; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.disk {
+    border: 1px solid #FF9999;
+    background-color: #FFCC66;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: 12px;
+    color: green;
+}
+
+#disk1 {
+    width: 80%;
+    flex-basis: 10%;
+}
+
+#disk2 {
+    width: 60%;
+    flex-basis: 10%;
+}
+
+#disk3 {
+    width: 40%;
+    flex-basis: 10%;
+}
+
+#disk4 {
+    width: 20%;
+    flex-basis: 10%;
+}
+
+.post {
+    height: 100%;
+    width: 1px;
+    border: 1px solid #6699FF;
+    background: #6699FF;
+}
