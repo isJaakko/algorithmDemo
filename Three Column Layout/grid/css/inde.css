@@ -1,0 +1,25 @@
+html * {
+    margin: 0;
+    padding: 0;
+}
+
+.layout div {
+    min-height: 300px;
+}
+
+.layout.grid {
+    display: grid;
+    grid-template-columns: 300px auto 300px;
+}
+
+.layout.grid .left {
+    background-color: red;
+}
+
+.layout.grid .right {
+    background-color: blue;
+}
+
+.layout.grid .center {
+    background-color: yellow;
+}

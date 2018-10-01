@@ -1,0 +1,29 @@
+html * {
+    margin: 0;
+    padding: 0;
+}
+
+.layout div {
+    min-height: 300px;
+}
+
+.layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.layout.flex .left {
+    flex-basis: 300px;
+    background-color: red;
+}
+
+.layout.flex .right {
+    flex-basis: 300px;
+    background-color: blue;
+}
+
+.layout.flex .center {
+    flex-grow: 1;
+    background-color: yellow;
+}

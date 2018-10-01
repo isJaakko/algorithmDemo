@@ -1,0 +1,26 @@
+html * {
+    margin: 0;
+    padding: 0;
+}
+
+.layout div {
+    min-height: 300px;
+}
+
+.layout.float .left {
+    float: left;
+    width: 300px;
+    background-color: red;
+}
+
+.layout.float .right {
+    float: right;
+    width: 300px;
+    background-color: blue;
+}
+
+.layout.float .center {
+    /* float: left; */
+    /* margin: 0 300px 0 300px; */
+    background-color: yellow;
+}

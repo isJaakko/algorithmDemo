@@ -1,0 +1,29 @@
+html * {
+    margin: 0;
+    padding: 0;
+}
+
+.layout div {
+    min-height: 300px;
+    display: table-cell;
+}
+
+.layout.table {
+    display: table;
+    width: 100%;
+    min-height:  300px;
+}
+
+.layout.table .left {
+    width: 300px;
+    background-color: red;
+}
+
+.layout.table .right {
+    width: 300px;
+    background-color: blue;
+}
+
+.layout.table .center {
+    background-color: yellow;
+}
