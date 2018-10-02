@@ -4,7 +4,7 @@ html * {
 }
 
 .layout div {
-    min-height: 300px;
+    min-height: 200px;
 }
 
 .layout {
@@ -27,3 +27,26 @@ html * {
     flex-grow: 1;
     background-color: yellow;
 }
+
+/* 垂直布局 */
+/* .layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.layout.flex .left {
+    flex: 0 1;
+    background-color: red;
+}
+
+.layout.flex .right {
+    flex: 0 1;
+    background-color: blue;
+}
+
+.layout.flex .center {
+    flex: 1 0 300px;
+    background-color: yellow;
+}  */

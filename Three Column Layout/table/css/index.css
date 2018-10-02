@@ -3,6 +3,7 @@ html * {
     padding: 0;
 }
 
+/* 水平布局 */
 .layout div {
     min-height: 300px;
     display: table-cell;
@@ -11,7 +12,7 @@ html * {
 .layout.table {
     display: table;
     width: 100%;
-    min-height:  300px;
+    min-height: 300px;
 }
 
 .layout.table .left {
@@ -27,3 +28,32 @@ html * {
 .layout.table .center {
     background-color: yellow;
 }
+
+/* 垂直布局 */
+/* .layout div {
+    width: 100%;
+    display: table-row;
+}
+
+.layout.table {
+    display: table;
+    width: 100%;
+    height: 100vh;
+}
+
+.layout.table .left {
+    height: 100px;
+    background-color: red;
+}
+
+.layout.table .right {
+    height: 100px;
+    background-color: blue;
+}
+
+.layout.table .center {
+    background-color: yellow;
+} */
+/* 
+    p.s. 给 <tr> 设置 background-color 无效
+ */
