@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snake</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* justify-content: space-between; */
+        }
+
+        #container {
+            height: 50vw;
+            width: 50vw;
+            background-color: black;
+        }
+
+        #control {
+            width: 100vw;
+            height: 200px;
+            background: #aaa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+        #control div{
+            width: 20px;
+            height: 20px;
+            background: red;
+            border: 1px solid #fff;
+        }
+
+        #left {}
+
+        #right {}
+
+        #up {}
+
+        #down {}
+    </style>
+</head>
+
+<body>
+    <canvas id="container" width="400" height="400">
+    </canvas>
+    <!-- <div id="control">
+        <div id="up">↑</div>
+        <div id="left">←</div>
+        <div id="right">→</div>
+        <div class="down">↓</div>
+    </div> -->
+</body>
+<script>
+    /*
+        设计思路：
+        1. 将容器等分成若干个小方格，在方格上绘制蛇身和食物，矩形位置用它在容器第几块来表示
+        2. 利用数组存储蛇身，吃到食物后在蛇头前进方向上添加一个小方格
+        3. 每次移动后，将新的位置添加到蛇头，pop 数组最后一个元素
+    */
+    var row = 20, // 总行数
+        col = 20, // 总列数
+        box = document.getElementById('container').getContext('2d'),
+        width = box.canvas.width / col, // 每个矩形宽度
+        height = box.canvas.height / row; // 每个矩形高度
+
+    var curPoint = {
+        row: 40,
+        col: 40
+    };
+    var snake = [44, 43, 42],
+        direction = 1,
+        food; //  0: 上, 1: 右, 2: 下, 3: 左
+    var timer;
+
+    var dirKey = {
+        0: 'up',
+        1: 'right',
+        2: 'down',
+        3: 'left'
+    };
+
+    // 绘制矩形
+    function draw(seat, color) {
+        box.fillStyle = color || 'yellow';
+        box.fillRect((seat % col) * width + 1, Math.floor(seat / col) * height + 1, width - 2, height - 2);
+    }
+    // 移动
+    function move(snake, direction) {
+
+        switch (direction) {
+            case 0:
+                snake.unshift(snake[0] - col);
+                break;
+            case 1:
+                snake.unshift(snake[0] + 1);
+                break;
+            case 2:
+                snake.unshift(snake[0] + col);
+                break;
+            case 3:
+                snake.unshift(snake[0] - 1);
+                break;
+        }
+        var n = snake[0];
+        if (n === food) {
+            drawFood();
+        } else {
+            draw(snake[snake.length - 1], 'black');
+            snake.pop();
+        }
+        if (snake.indexOf(n, 1) !== -1 ||
+            n % col === -1 || (n) % row === -1 ||
+            Math.floor(n / row) === -1 || Math.floor(n / row) === row) {
+            alert('Game Over');
+            clearInterval(timer);
+        }
+    }
+    // 绘制蛇身
+    function drawSnake(snake) {
+        snake.__proto__.constructor === Array &&
+            snake.map(function (item) {
+                draw(item);
+            })
+    }
+    // 绘制食物
+    function drawFood() {
+        do {
+            food = Math.floor(Math.random() * width * height);
+        } while (snake.indexOf(food) !== -1)
+        draw(food, 'green');
+    }
+    // 改变方向
+    document.addEventListener('keydown', function (e) {
+        var newDirection;
+        switch (e.keyCode) {
+            case 37:
+                newDirection = 3;
+                break;
+            case 38:
+                newDirection = 0;
+                break;
+            case 39:
+                newDirection = 1;
+                break;
+            case 40:
+                newDirection = 2;
+                break;
+        }
+
+        if ((newDirection + 2) % 4 != direction) {
+            direction = newDirection;
+        }
+    });
+
+
+    drawSnake(snake);
+    drawFood();
+
+    ! function () {
+        timer = setInterval(function () {
+            move(snake, direction);
+            drawSnake(snake);
+        }, 150);
+    }()
+</script>
+
+</html>
